@@ -60,7 +60,7 @@ class MineSweeper
     end
     p hidden
 
-    hidden == 2 ? true : false
+    hidden == 10 ? true : false
   end
 
 end

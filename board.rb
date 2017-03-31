@@ -23,7 +23,7 @@ class Board
   end
 
   def set_bombs
-    2.times do |i|
+    10.times do |i|
       pos = nil
       until bomb?(pos) == false
         x = (0..8).to_a.sample
