@@ -8,7 +8,7 @@ class MineSweeper
   end
 
   def play
-    until over?
+    until @board.over?
       @board.render
       pos = get_pos
       move = place_what
@@ -49,18 +49,6 @@ class MineSweeper
       end
     end
     @board.render
-  end
-
-  def over?
-    hidden = 0
-    @board.grid.each do |row|
-      row.each do |tile|
-        hidden += 1 unless tile.visible
-      end
-    end
-    p hidden
-
-    hidden == 10 ? true : false
   end
 
 end

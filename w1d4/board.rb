@@ -23,7 +23,7 @@ class Board
   end
 
   def set_bombs
-    10.times do |i|
+    NUM_BOMBS.times do |i|
       pos = nil
       until bomb?(pos) == false
         x = (0..8).to_a.sample
@@ -42,8 +42,18 @@ class Board
     end
   end
 
-  def set_neighbors
+  def over?
+    hidden = 0
+    @grid.each do |row|
+      row.each do |tile|
+        hidden += 1 unless tile.visible
+      end
+    end
 
+    hidden == NUM_BOMBS ? true : false
+  end
+
+  def set_neighbors
     @grid.each_with_index do |row, x|
       row.each_with_index do |tile, y|
         adjacents = (-1..1).to_a.repeated_permutation(2).to_a - [[0, 0]]
